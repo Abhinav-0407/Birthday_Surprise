@@ -1,0 +1,48 @@
+/* Shared 2.0 palette and base styles */
+:root {
+    --ivory: #FFF9FC;
+    --soft-pink: #FDECF4;
+    --blush: #F8D7E8;
+    --petal: #F6C7DA;
+    --rose: #E89AB8;
+    --deep-rose: #C86B98;
+    --ink: #654653;
+    --muted: #987887;
+    --glass: rgba(255, 255, 255, .76);
+    --border: rgba(200, 107, 152, .18);
+    --shadow: 0 24px 70px rgba(173, 104, 137, .14);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--ink);
+    background: var(--ivory);
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.7;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 8% 10%, rgba(248, 215, 232, .66), transparent 38%),
+        radial-gradient(circle at 92% 88%, rgba(253, 236, 244, .82), transparent 42%),
+        linear-gradient(145deg, #FFFDFE, #FFF7FB);
+}
+
+button { font: inherit; }
+
+::selection { background: var(--blush); color: var(--ink); }
+
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: var(--soft-pink); }
+::-webkit-scrollbar-thumb { background: var(--rose); border-radius: 20px; }
+::-webkit-scrollbar-thumb:hover { background: var(--deep-rose); }

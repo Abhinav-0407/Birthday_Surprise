@@ -1,0 +1,52 @@
+/* Soft rose page transition — Midnight Gold 2.0 */
+#transition {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(253, 236, 244, 0);
+    backdrop-filter: blur(0);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .4s ease, background .4s ease, backdrop-filter .4s ease;
+}
+
+#transition.active {
+    opacity: 1;
+    visibility: visible;
+    background: rgba(253, 236, 244, .96);
+    backdrop-filter: blur(10px);
+}
+
+.transition-glow {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 154, 184, .34), rgba(248, 215, 232, .18), transparent 75%);
+    filter: blur(25px);
+    transform: scale(.6);
+    opacity: 0;
+}
+
+.transition-text {
+    position: relative;
+    z-index: 2;
+    padding: 0 18px;
+    color: #B65F86;
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    letter-spacing: 2px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    text-shadow: 0 0 16px rgba(200, 107, 152, .22);
+}
+
+@media (max-width: 768px) {
+    .transition-text { font-size: 28px; }
+    .transition-glow { width: 240px; height: 240px; }
+}
