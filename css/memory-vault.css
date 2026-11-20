@@ -1,0 +1,133 @@
+/* Memory Vault 2.0 — light-pink visual system */
+:root {
+  --ivory: #FFF9FC;
+  --soft-pink: #FDECF4;
+  --blush: #F8D7E8;
+  --petal: #F6C7DA;
+  --rose: #E89AB8;
+  --deep-rose: #C86B98;
+  --ink: #49333F;
+  --muted: #8F7180;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
+}
+button { font: inherit; }
+.vault-page {
+  position: relative; min-height: 100vh; overflow: hidden;
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(248,215,232,.72), transparent 38%),
+    radial-gradient(ellipse at 88% 82%, rgba(246,199,218,.45), transparent 36%),
+    linear-gradient(145deg, #FFF9FC 0%, #FDECF4 52%, #FFF9FC 100%);
+}
+.ambient { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(4px); }
+.ambient-one { width: 300px; height: 300px; top: -130px; right: -80px; background: rgba(232,154,184,.17); }
+.ambient-two { width: 240px; height: 240px; bottom: -110px; left: -70px; background: rgba(248,215,232,.65); }
+.petal-field { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.petal-field span {
+  position: absolute; top: -35px; width: 12px; height: 19px; border-radius: 90% 8% 90% 8%;
+  background: linear-gradient(145deg, #E89AB8, #D96C9B); opacity: .64;
+  animation: petal-fall linear infinite;
+}
+@keyframes petal-fall { to { transform: translate3d(55px, 110vh, 0) rotate(420deg); } }
+.vault-intro {
+  position: relative; z-index: 1; min-height: 100vh; padding: 54px 22px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+}
+.vault-emblem {
+  width: 132px; height: 132px; border: 1px solid rgba(200,107,152,.45); border-radius: 50%;
+  display: grid; place-items: center; position: relative; margin-bottom: 27px;
+  background: rgba(255,255,255,.44); box-shadow: 0 18px 55px rgba(200,107,152,.15), inset 0 0 24px rgba(248,215,232,.6);
+}
+.emblem-ring { position: absolute; inset: 10px; border: 1px dashed rgba(200,107,152,.5); border-radius: 50%; }
+.emblem-friendly { font-size: 43px; line-height: 1; filter: drop-shadow(0 5px 12px rgba(200,107,152,.18)); }
+.emblem-key { position: absolute; right: 17px; top: 20px; color: #D96C9B; font-size: 19px; }
+.eyebrow { margin: 0 0 12px; color: var(--deep-rose); text-transform: uppercase; letter-spacing: 3px; font-size: 11px; font-weight: 700; }
+.vault-intro h1, .gallery-top h2 {
+  margin: 0; color: #A94F79; font-family: 'Cormorant Garamond', serif;
+  font-weight: 700; letter-spacing: 5px; line-height: 1.05;
+}
+.vault-intro h1 { font-size: clamp(42px, 7vw, 76px); }
+.intro-copy { margin: 17px 0 30px; color: var(--muted); font-size: 14px; letter-spacing: .35px; }
+.open-vault-btn, .continue-btn {
+  border: 0; border-radius: 999px; color: white; cursor: pointer;
+  background: linear-gradient(110deg, #D96C9B, #C86B98);
+  box-shadow: 0 12px 28px rgba(200,107,152,.27);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.open-vault-btn { display: inline-flex; align-items: center; gap: 13px; padding: 15px 24px; font-weight: 700; font-size: 13px; }
+.open-vault-btn:hover, .continue-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(200,107,152,.34); }
+.button-friendly { font-size: 16px; line-height: 1; }
+.button-arrow { font-size: 19px; line-height: 12px; }
+.intro-sparkle { margin-top: 35px; color: #D96C9B; font-size: 24px; animation: twinkle 2s ease-in-out infinite; }
+@keyframes twinkle { 50% { opacity: .35; transform: scale(.78) rotate(25deg); } }
+
+.gallery-section { position: relative; z-index: 1; width: min(1160px, calc(100% - 40px)); margin: 0 auto; padding: 64px 0 36px; }
+.gallery-top { text-align: center; margin-bottom: 34px; }
+.gallery-top h2 { font-size: clamp(38px, 5vw, 58px); }
+.title-rule { display: flex; justify-content: center; align-items: center; gap: 13px; margin-top: 14px; color: var(--deep-rose); font-size: 13px; }
+.title-rule span { width: 62px; height: 1px; background: linear-gradient(90deg, transparent, var(--rose)); }
+.title-rule span:last-child { transform: rotate(180deg); }
+.memory-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.memory-card {
+  position: relative; padding: 8px; border: 1px solid rgba(200,107,152,.18); border-radius: 18px;
+  background: rgba(255,255,255,.72); box-shadow: 0 12px 32px rgba(142,83,111,.10);
+  cursor: pointer; overflow: hidden; transition: transform .3s ease, box-shadow .3s ease;
+  aspect-ratio: 4 / 5; min-width: 0;
+}
+.memory-card:hover { transform: translateY(-6px) rotate(-.4deg); box-shadow: 0 18px 38px rgba(142,83,111,.17); }
+.memory-card img, .memory-card video { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; background: #F8D7E8; }
+.memory-card .video-mark {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%;
+  color: white; background: rgba(200,107,152,.88); font-size: 20px; pointer-events: none;
+}
+.gallery-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 32px 0 8px; }
+.back-btn { border: 1px solid rgba(200,107,152,.38); background: rgba(255,255,255,.6); color: var(--deep-rose); border-radius: 999px; padding: 12px 20px; cursor: pointer; font-weight: 700; }
+.continue-btn { padding: 13px 23px; font-weight: 700; }
+.continue-btn span { margin-left: 9px; font-size: 18px; }
+
+.viewer {
+  position: fixed; inset: 0; z-index: 10000; display: none; align-items: center; justify-content: center;
+  padding: 60px 76px; background: rgba(64,38,52,.92); backdrop-filter: blur(12px);
+}
+.viewer.open { display: flex; }
+.viewer-media { width: min(88vw, 1050px); height: min(82vh, 850px); display: grid; place-items: center; }
+.viewer-media img, .viewer-media video { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 10px; box-shadow: 0 20px 70px rgba(0,0,0,.3); }
+/* Portrait photos use a narrower, shorter viewing frame. Landscape images keep the default sizing. */
+.viewer-media img.portrait-photo { max-height: 58vh; max-width: min(42vw, 500px); width: auto; height: auto; }
+.viewer-close, .viewer-nav {
+  position: absolute; border: 0; color: white; cursor: pointer; background: rgba(255,255,255,.14);
+  border-radius: 50%; display: grid; place-items: center; transition: background .2s ease;
+}
+.viewer-close:hover, .viewer-nav:hover { background: rgba(232,154,184,.75); }
+.viewer-close { top: 18px; right: 22px; width: 44px; height: 44px; font-size: 32px; line-height: 1; }
+.viewer-nav { top: 50%; transform: translateY(-50%); width: 46px; height: 46px; font-size: 32px; }
+.viewer-prev { left: 18px; } .viewer-next { right: 18px; }
+.viewer-counter { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); color: white; font-size: 12px; letter-spacing: 2px; }
+
+[hidden] { display: none !important; }
+@media (max-width: 800px) {
+  .memory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .gallery-section { width: min(100% - 28px, 620px); padding-top: 45px; }
+}
+@media (max-width: 480px) {
+  .vault-intro { min-height: 100svh; }
+  .vault-emblem { width: 112px; height: 112px; }
+  .memory-grid { gap: 10px; }
+  .memory-card { padding: 5px; border-radius: 13px; }
+  .memory-card img, .memory-card video { border-radius: 9px; }
+  .gallery-footer { padding-top: 24px; }
+  .viewer { padding: 55px 48px; }
+  .viewer-media { width: 100%; height: 78vh; }
+  .viewer-media img.portrait-photo { max-height: 56vh; max-width: min(76vw, 360px); }
+  .viewer-prev { left: 7px; } .viewer-next { right: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
