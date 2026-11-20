@@ -1,0 +1,511 @@
+/* ==========================================
+   FINAL PAGE — CINEMATIC NIGHT EDITION
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Quicksand:wght@400;500;600;700&family=Poppins:wght@400;500;600&family=Great+Vibes&display=swap');
+
+:root{
+    --gold:#E7C979;
+    --pink:#F0B6CF;
+    --text:#F8F5F7;
+    --muted:#D8C8D2;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:'Quicksand',sans-serif;
+    color:var(--text);
+    overflow-x:hidden;
+    position:relative;
+
+    background:
+        radial-gradient(circle at 20% 15%, rgba(240,182,207,0.18), transparent 25%),
+        radial-gradient(circle at 80% 10%, rgba(231,201,121,0.10), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(120,80,150,0.12), transparent 40%),
+        linear-gradient(
+            180deg,
+            #09060D 0%,
+            #120A18 28%,
+            #17101F 58%,
+            #120A18 82%,
+            #08050B 100%
+        );
+}
+
+#final{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:80px 20px;
+    overflow:hidden;
+}
+
+/* ==========================================
+   FIREWORKS STYLE NIGHT BACKGROUND
+========================================== */
+
+body{
+    margin:0;
+    font-family:'Quicksand',sans-serif;
+    color:#F8F5F7;
+    overflow-x:hidden;
+    position:relative;
+    background:#050814;
+}
+
+#final{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:80px 20px;
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at top, rgba(40,60,120,0.25) 0%, transparent 45%),
+        radial-gradient(circle at 20% 80%, rgba(80,40,120,0.18) 0%, transparent 35%),
+        linear-gradient(180deg,
+            #02040A 0%,
+            #050814 25%,
+            #08111F 55%,
+            #050814 80%,
+            #010203 100%);
+}
+
+/* Moonlight glow */
+
+.glow{
+    position:absolute;
+    top:-180px;
+    left:50%;
+    transform:translateX(-50%);
+    width:900px;
+    height:900px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+        rgba(120,160,255,0.12) 0%,
+        rgba(80,120,220,0.08) 35%,
+        transparent 70%);
+    filter:blur(120px);
+    z-index:0;
+}
+
+/* Stars */
+
+.stars{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+}
+
+.stars::before,
+.stars::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
+        radial-gradient(1.5px 1.5px at 120px 80px, #ffffff, transparent),
+        radial-gradient(2px 2px at 250px 180px, #dfe9ff, transparent),
+        radial-gradient(1px 1px at 400px 60px, #ffffff, transparent),
+        radial-gradient(2px 2px at 650px 220px, #ffffff, transparent),
+        radial-gradient(1.5px 1.5px at 900px 140px, #dfe9ff, transparent),
+        radial-gradient(2px 2px at 1100px 300px, #ffffff, transparent),
+        radial-gradient(1px 1px at 1350px 120px, #ffffff, transparent);
+    background-repeat:repeat;
+    background-size:1400px 800px;
+    animation:starTwinkle 6s linear infinite;
+    opacity:0.9;
+}
+
+.stars::after{
+    animation-duration:10s;
+    opacity:0.5;
+}
+
+@keyframes starTwinkle{
+    0%,100%{opacity:.45;}
+    50%{opacity:1;}
+}
+
+/* ==========================================
+   STARS
+========================================== */
+
+.stars{
+    position:fixed;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+}
+
+.stars span{
+    position:absolute;
+    width:2px;
+    height:2px;
+    border-radius:50%;
+    background:#FFF8FD;
+    box-shadow:0 0 8px rgba(255,240,248,.9);
+    animation:twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.25;
+        transform:scale(.8);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.6);
+    }
+}
+
+/* ==========================================
+   LAYOUT
+========================================== */
+
+.container{
+    width:min(920px,95%);
+    position:relative;
+    z-index:5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:36px;
+}
+
+/* ==========================================
+   PORTRAIT (same style as old final page)
+========================================== */
+
+.portrait-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.portrait-frame{
+    width:340px;
+    height:460px;
+    padding:10px;
+    border-radius:24px;
+    background:linear-gradient(145deg,
+        #E7C979 0%,
+        #F8E7A8 50%,
+        #D8B85C 100%);
+
+    box-shadow:
+        0 0 25px rgba(231,201,121,0.45),
+        0 0 60px rgba(231,201,121,0.18),
+        0 20px 40px rgba(0,0,0,0.45);
+}
+
+.portrait-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:16px;
+    display:block;
+}
+
+.portrait-frame::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:18px;
+    pointer-events:none;
+}
+
+/* ==========================================
+   INTRO
+========================================== */
+
+.intro{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+}
+
+.subtitle{
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-size:14px;
+    font-weight:600;
+    font-family:'Poppins',sans-serif;
+}
+
+.divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    color:var(--gold);
+}
+
+.divider span{
+    width:120px;
+    height:1px;
+    background:linear-gradient(
+        to right,
+        transparent,
+        rgba(231,201,121,.6),
+        transparent
+    );
+}
+
+/* ==========================================
+   LETTER CARD
+========================================== */
+
+.letter-card{
+    width:100%;
+    max-width:860px;
+    padding:52px 46px;
+    background:rgba(18,10,24,.72);
+    border:1px solid rgba(231,201,121,.22);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-radius:30px;
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45),
+        0 0 40px rgba(231,201,121,.10);
+}
+
+.letter-header{
+    margin-bottom:28px;
+}
+
+.letter-header h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+    color:var(--gold);
+}
+
+.letter{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.greeting{
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px !important;
+    color:#FFE8B8 !important;
+    text-align:center !important;
+    margin-bottom:10px;
+}
+
+.letter p{
+    font-family:'Great Vibes',cursive;
+    font-size:34px;
+    line-height:1.9;
+    color:#FFF7FB;
+    text-align:left;
+}
+
+/* ==========================================
+   DIET COKE PROMISE
+========================================== */
+
+.diet-promise{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    width:fit-content;
+    margin:16px auto;
+    padding:16px 26px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(231,201,121,.18);
+    border-radius:999px;
+}
+
+.diet-coke{
+    width:54px;
+}
+
+.diet-promise span{
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;
+    color:#FFFFFF;
+}
+
+.signature{
+    text-align:right !important;
+    color:#FFE8B8 !important;
+    font-size:40px !important;
+    margin-top:10px;
+}
+
+/* ==========================================
+   CLOSING
+========================================== */
+
+.closing{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+}
+
+.closing h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:48px;
+    color:#FFF7FB;
+    text-shadow:0 0 20px rgba(231,201,121,.25);
+}
+
+.closing p{
+    color:var(--muted);
+    font-size:18px;
+}
+
+/* ==========================================
+   ENTRANCE STATES
+========================================== */
+
+.portrait-wrapper,
+.intro,
+.letter-card,
+.closing{
+    opacity:0;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:768px){
+
+    #final{
+        padding:60px 16px;
+    }
+
+    .portrait-frame{
+        width:260px;
+        height:360px;
+    }
+
+    .divider span{
+        width:70px;
+    }
+
+    .letter-card{
+        padding:32px 24px;
+    }
+
+    .letter-header h2{
+        font-size:34px;
+    }
+
+    .letter p{
+        font-size:28px;
+    }
+
+    .diet-promise{
+        flex-direction:column;
+        border-radius:22px;
+        width:100%;
+    }
+
+    .closing h2{
+        font-size:34px;
+    }
+
+}
+/* ==========================================
+   2.0 BACKGROUND REDESIGN — MATCHING THE PINK FLOW
+   Preserves all final-surprise wording and content.
+========================================== */
+:root{
+    --gold:#C86B98;
+    --pink:#E89AB8;
+    --text:#654354;
+    --muted:#987889;
+}
+
+body{
+    color:#654354;
+    background:
+        radial-gradient(circle at 12% 12%, rgba(248,215,232,.62), transparent 34%),
+        radial-gradient(circle at 88% 82%, rgba(253,236,244,.88), transparent 38%),
+        linear-gradient(145deg,#FFF9FC 0%,#FDEAF3 52%,#FCE3EE 100%);
+}
+
+#final{
+    background:
+        radial-gradient(circle at 10% 8%,rgba(255,255,255,.88),transparent 32%),
+        radial-gradient(circle at 90% 88%,rgba(232,154,184,.20),transparent 36%),
+        linear-gradient(145deg,#FFF9FC 0%,#FDEAF3 52%,#FCE3EE 100%);
+}
+
+.glow{
+    background:radial-gradient(circle,
+        rgba(232,154,184,.32) 0%,
+        rgba(255,255,255,.72) 38%,
+        transparent 72%);
+    filter:blur(105px);
+}
+
+.stars::before,.stars::after{
+    background-image:
+        radial-gradient(2px 2px at 20px 30px,#D96C9B,transparent),
+        radial-gradient(1.5px 1.5px at 120px 80px,#E89AB8,transparent),
+        radial-gradient(2px 2px at 250px 180px,#C86B98,transparent),
+        radial-gradient(1px 1px at 400px 60px,#D96C9B,transparent),
+        radial-gradient(2px 2px at 650px 220px,#E89AB8,transparent),
+        radial-gradient(1.5px 1.5px at 900px 140px,#C86B98,transparent),
+        radial-gradient(2px 2px at 1100px 300px,#D96C9B,transparent),
+        radial-gradient(1px 1px at 1350px 120px,#E89AB8,transparent);
+    opacity:.55;
+}
+
+.stars span{
+    background:#D96C9B;
+    box-shadow:0 0 8px rgba(217,108,155,.65);
+}
+
+.portrait-frame{
+    background:linear-gradient(145deg,#E89AB8 0%,#F8D7E8 50%,#C86B98 100%);
+    box-shadow:0 0 25px rgba(200,107,152,.24),0 0 60px rgba(232,154,184,.16),0 20px 40px rgba(126,72,99,.14);
+}
+
+.subtitle,.divider,.letter-header h2{color:#C86B98;}
+.divider span{background:linear-gradient(to right,transparent,rgba(200,107,152,.48),transparent);}
+
+.letter-card{
+    background:rgba(255,255,255,.76);
+    border:1px solid rgba(232,154,184,.42);
+    box-shadow:0 24px 75px rgba(173,104,137,.15);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+}
+
+.greeting,.signature{color:#A94F78 !important;}
+.letter p{color:#70485B;}
+.diet-promise{
+    background:rgba(253,236,244,.78);
+    border:1px solid rgba(232,154,184,.42);
+}
+.diet-promise span{color:#77445D;}
+.closing h2{color:#9E5278;text-shadow:0 5px 24px rgba(200,107,152,.16);}
+.closing p{color:#987889;}
